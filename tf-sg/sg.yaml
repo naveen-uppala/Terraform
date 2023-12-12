@@ -5,6 +5,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties: 
       GroupDescription: A Security Group for Demo-EC2
+      GroupName: Batch16 SG
       VpcId: vpc-09b77ec6cfd8f4129
       SecurityGroupIngress:
         - IpProtocol: tcp

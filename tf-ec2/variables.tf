@@ -1,11 +1,11 @@
-variable "aws_region" {
+variable "primary_region" {
        description = "The AWS region to create Infrastructure" 
-       default     = "ap-south-1" 
+       default     = "us-east-1" 
 }
 
 variable "key_name" { 
     description = " SSH key to connect to ec2 instance" 
-    default     =  "batch13" 
+    default     =  "komaldockerp1" 
 }
 
 variable "instance_type" { 
@@ -15,10 +15,15 @@ variable "instance_type" {
 
 variable "ami_id" { 
     description = "AMI for Amazon-Linux Ec2 instance" 
-    default     = "ami-022d03f649d12a49d" 
+    default     = "ami-0230bd60aa48260c6" 
 }
 
 variable "subnet_id" { 
     description = "Subnet to launch Amazon-Linux Ec2 instance" 
-    default     = "subnet-0287cbfb11ccb5993" 
+    default     = "subnet-0e197f08b5b755257" 
+}
+
+variable "securitygrp_id" { 
+    description = "Security group for attaching to EC2 instance" 
+    default     = "sg-09d434ff9fb48519a" 
 }
