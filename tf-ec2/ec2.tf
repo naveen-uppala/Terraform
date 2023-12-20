@@ -9,7 +9,7 @@ resource "aws_instance" "myFirstInstance" {
   key_name = var.key_name
   instance_type = var.instance_type
   vpc_security_group_ids= [var.securitygrp_id]
-  user_data = "${file("installations.sh")}"
+  user_data = "${file("test.sh")}"
   tags= {
     Name = "Demo Instance"
   }
@@ -18,7 +18,7 @@ resource "aws_instance" "myFirstInstance" {
 resource "aws_volume_attachment" "ebs_att" {
   device_name = "/dev/sdf"
   volume_id   = aws_ebs_volume.example.id
-  instance_id = "i-0aa519c770e508aa5"
+  instance_id = aws_instance.myFirstInstance.id
 }
 
 resource "aws_ebs_volume" "example" {
