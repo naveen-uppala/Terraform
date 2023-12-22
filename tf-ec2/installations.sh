@@ -31,6 +31,7 @@ setfacl -m user:ec2-user:rw /var/run/docker.sock
 set -e
 mvn_version=${mvn_version:-3.9.4}
 url="https://dlcdn.apache.org/maven/maven-3/${mvn_version}/binaries/apache-maven-${mvn_version}-bin.tar.gz"
+mkdir -p /opt/maven
 install_dir="/opt/maven"
 curl -fsSL ${url} | tar zx --strip-components=1 -C ${install_dir}
 cat << EOF > /etc/profile.d/maven.sh
@@ -47,8 +48,7 @@ printf "\n\nTo get mvn in your path, open a new shell or execute: source /etc/pr
 ################### Install  AWS CLI tool on EC2 #############################
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip 
-sudo ./aws/install 
-
+./aws/install 
 
 ################### Install kubectl CLI tool on EC2 #############################
  
@@ -61,5 +61,5 @@ echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
 curl --silent --location --remote-name \
   "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v3.2.3/kustomize_kustomize.v3.2.3_linux_amd64" && \
   chmod a+x kustomize_kustomize.v3.2.3_linux_amd64 && \
-  sudo mv kustomize_kustomize.v3.2.3_linux_amd64 /usr/local/bin/kustomize
+  mv kustomize_kustomize.v3.2.3_linux_amd64 /usr/local/bin/kustomize
 --//--
