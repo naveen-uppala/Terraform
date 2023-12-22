@@ -15,21 +15,20 @@ cloud_final_modules:
 Content-Type: text/x-shellscript; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Content-Disposition: attachment; filename="userdata.txt"
 
 
 #!/bin/bash 
-sudo yum update -y
-sudo yum upgrade -y
-sudo yum install java-17-amazon-corretto-headless -y
+#Update Linux packages and install Java
+yum update -y
+yum upgrade -y
+yum install java-17-amazon-corretto-headless -y
 
 ######################  Install Docker and start docker service ######################
-#!/bin/bash 
-sudo yum install docker -y
-sudo service docker start
-sudo systemctl enable docker
-sudo usermod -aG docker ec2-user
-sudo setfacl -m user:ec2-user:rw /var/run/docker.sock
+yum install docker -y
+service docker start
+systemctl enable docker
+usermod -aG docker ec2-user
+setfacl -m user:ec2-user:rw /var/run/docker.sock
 
 ########################## Download and Install Apache Maven on Amazon Linux 2 ###################
 
