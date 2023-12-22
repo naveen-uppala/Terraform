@@ -2,10 +2,6 @@ Content-Type: multipart/mixed; boundary="//"
 MIME-Version: 1.0
 
 --//
-Content-Type: text/cloud-config; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: attachment; filename="cloud-config.txt"
 
 #cloud-config
 cloud_final_modules:
@@ -16,9 +12,8 @@ Content-Type: text/x-shellscript; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 
-
 #!/bin/bash 
-#Update Linux packages and install Java
+
 yum update -y
 yum upgrade -y
 yum install java-17-amazon-corretto-headless -y
