@@ -15,6 +15,7 @@ Content-Transfer-Encoding: 7bit
 #!/bin/bash
 yum update -y
 yum upgrade -y
+yum install git -y
 set -e
 mvn_version=${mvn_version:-3.9.4}
 url="https://dlcdn.apache.org/maven/maven-3/${mvn_version}/binaries/apache-maven-${mvn_version}-bin.tar.gz"
