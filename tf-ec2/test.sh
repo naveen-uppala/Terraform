@@ -33,6 +33,7 @@ source /etc/profile.d/maven.sh
 echo maven installed to ${install_dir}
 printf "\n\nTo get mvn in your path, open a new shell or execute: source /etc/profile.d/maven.sh\n" 
 yum install java-17-amazon-corretto-headless -y
+rpm -ivh https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.rpm
 yum install docker -y
 service docker start
 systemctl enable docker
