@@ -1,8 +1,8 @@
-resource "aws_eks_node_group" "example" {
-  cluster_name    = aws_eks_cluster.example.name
-  node_group_name = "example"
+resource "aws_eks_node_group" "node-group-1" {
+  cluster_name    = aws_eks_cluster.ekscluster.name
+  node_group_name = "node-group-1"
   node_role_arn   = aws_iam_role.node_group_role.arn
-  subnet_ids      = ["subnet-08d1bf0017f76d884", "subnet-0cdf71ab11b40e8cb"]
+  subnet_ids      = ["subnet-06d716c8e955c6113", "subnet-0dac379e2dcccd0ab", "subnet-06cc9a093404f7375"]
   capacity_type   = "ON_DEMAND"
   instance_types  = ["t2.medium"]
 
@@ -15,18 +15,12 @@ resource "aws_eks_node_group" "example" {
   update_config {
     max_unavailable = 1
   }
-
   # Ensure that IAM Role permissions are created before and deleted after EKS Node Group handling.
   # Otherwise, EKS will not be able to properly delete EC2 Instances and Elastic Network Interfaces.
-  depends_on = [
-    aws_iam_role_policy_attachment.example-AmazonEKSWorkerNodePolicy,
-    aws_iam_role_policy_attachment.example-AmazonEKS_CNI_Policy,
-    aws_iam_role_policy_attachment.example-AmazonEC2ContainerRegistryReadOnly,
-  ]
 }
 
 resource "aws_iam_role" "node_group_role" {
-  name = "eks-node-group-example"
+  name = "eks-node-group"
 
   assume_role_policy = jsonencode({
     Statement = [{
@@ -38,19 +32,8 @@ resource "aws_iam_role" "node_group_role" {
     }]
     Version = "2012-10-17"
   })
-}
-
-resource "aws_iam_role_policy_attachment" "example-AmazonEKSWorkerNodePolicy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
-  role       = aws_iam_role.node_group_role.name
-}
-
-resource "aws_iam_role_policy_attachment" "example-AmazonEKS_CNI_Policy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
-  role       = aws_iam_role.node_group_role.name
-}
-
-resource "aws_iam_role_policy_attachment" "example-AmazonEC2ContainerRegistryReadOnly" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
-  role       = aws_iam_role.node_group_role.name
+  
+  managed_policy_arns =  ["arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy", 
+  "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy", 
+  "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"]
 }

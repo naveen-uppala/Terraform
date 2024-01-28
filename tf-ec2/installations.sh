@@ -18,10 +18,11 @@ Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment; filename="userdata.txt"
 
 
-#!/bin/bash 
-sudo yum update -y
-sudo yum upgrade -y
-sudo yum install java-17-amazon-corretto-headless -y
+#!/bin/bash
+exec > /var/log/user-data.log 2>&1
+yum update -y
+yum upgrade -y
+yum install java-17-amazon-corretto-headless -y
 
 ######################  Install Docker and start docker service ######################
 #!/bin/bash 
@@ -73,3 +74,4 @@ curl --silent --location --remote-name \
   sudo mv kustomize_kustomize.v3.2.3_linux_amd64 /usr/local/bin/kustomize
 
 kustomize version
+--//--

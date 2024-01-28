@@ -8,8 +8,8 @@ resource "aws_instance" "myFirstInstance" {
   ami     = var.ami_id
   key_name = var.key_name
   instance_type = var.instance_type
-  vpc_security_group_ids= [var.securitygrp_id]
-  user_data = "${file("test.sh")}"
+  vpc_security_group_ids= ["sg-00b6d2c08d20f65fb"]
+  # user_data = "${file("installations.sh")}"
   tags= {
     Name = "Demo Instance"
   }
@@ -22,7 +22,7 @@ resource "aws_volume_attachment" "ebs_att" {
 }
 
 resource "aws_ebs_volume" "example" {
-  availability_zone = "us-east-1a"
+  availability_zone = "us-east-2b"
   size              = 1
     tags = {
     Name = "HelloEBS"
