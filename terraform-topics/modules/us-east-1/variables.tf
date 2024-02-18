@@ -1,5 +1,5 @@
 variable "ami_id" {
-  default = "ami-0449c34f967dbf18a"
+  default = "ami-0e731c8a588258d0d"
 }
 
 variable "instance_type" {
@@ -7,5 +7,5 @@ variable "instance_type" {
 }
 
 variable "aws_region" {
-  default = "ap-south-1"
+  default = "us-east-1"
 }

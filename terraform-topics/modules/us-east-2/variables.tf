@@ -1,11 +1,11 @@
 variable "ami_id" {
-  default = "ami-0449c34f967dbf18a"
+  default = "ami-0c20d88b0021158c6"
 }
 
 variable "instance_type" {
-  default = "t2.micro"
+  default = "t2.medium"
 }
 
 variable "aws_region" {
-  default = "ap-south-1"
+  default = "us-east-2"
 }
