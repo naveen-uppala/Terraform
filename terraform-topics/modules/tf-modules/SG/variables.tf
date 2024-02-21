@@ -4,6 +4,6 @@ variable "vpc_id" {
 }
 
 variable "vpc_name" {
-    default = "Batch-17 Security Group"
+    default = "Demo Security Group"
   
 }

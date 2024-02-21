@@ -27,6 +27,6 @@ resource "aws_security_group" "batch17_security_grp" {
   }
 
   tags= {
-    Name = "Batch-17 Security Group"
+    Name = "Demo Security Group"
   }
 }
