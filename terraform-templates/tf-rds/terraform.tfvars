@@ -1,0 +1,12 @@
+region                = "us-east-2"  # Change this to your desired region
+db_instance_identifier = "database-tcn"
+allocated_storage     = 20
+storage_type          = "gp2"
+engine                = "mysql"
+engine_version        = "8.0.33"
+instance_class        = "db.t3.micro"
+db_name               = "tcn"
+db_username           = "tcn"
+db_password           = "tcntcntcn"
+vpc_security_group_ids = ["sg-06ac155edea432fbc"]
+availability_zone     = "us-east-2b"
