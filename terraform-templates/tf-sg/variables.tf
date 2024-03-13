@@ -13,8 +13,8 @@ variable "ssh_cidr_block" {
   default     = ["0.0.0.0/0"]
 }
 
-variable "https_cidr_block" {
-  description = "CIDR block for HTTPS traffic"
-  type        = list(string)
-  default     = ["0.0.0.0/0"]
-}
+# variable "https_cidr_block" {
+#   description = "CIDR block for HTTPS traffic"
+#   type        = list(string)
+#   default     = ["0.0.0.0/0"]
+# }
