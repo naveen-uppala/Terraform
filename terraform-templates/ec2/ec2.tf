@@ -11,7 +11,7 @@ resource "aws_instance" "myFirstInstance" {
   vpc_security_group_ids= ["sg-00b6d2c08d20f65fb"]
   # user_data = "${file("installations.sh")}"
   tags= {
-    Name = "Demo Instance"
+    Name = "tcn Instance"
   }
 }  
 
