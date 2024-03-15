@@ -1,6 +1,6 @@
 resource "aws_alb" "main" {
     name        = "cb-load-balancer"
-    subnets         = aws_subnet.public.*.id
+    subnets         = var.aws_subnet
     security_groups = [aws_security_group.lb.id]
 }
 
@@ -8,7 +8,7 @@ resource "aws_alb_target_group" "app" {
     name        = "cb-target-group"
     port        = 80
     protocol    = "HTTP"
-    vpc_id      = aws_vpc.main.id
+    vpc_id      = var.aws_vpc
     target_type = "ip"
 
     health_check {
