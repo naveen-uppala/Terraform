@@ -32,13 +32,13 @@ variable "app_image" {
 
 variable "app_port" {
     description = "Port exposed by the docker image to redirect traffic to"
-    default = 80
-
+    type = number
 }
 
 variable "app_count" {
     description = "Number of docker containers to run"
-    default = 1
+    type = number
+    
 }
 
 variable "health_check_path" {
@@ -54,3 +54,20 @@ variable "fargate_memory" {
     description = "Fargate instance memory to provision (in MiB)"
     default = "2048"
 }
+
+
+variable "aws_vpc" {
+    description = "vpc id"
+    type = string
+}
+
+variable "aws_subnet" {
+    description = "aws subnets"
+    type = list(string)
+}
+
+variable "ami_id" {
+    description = "ami"
+    type = string
+}
+
