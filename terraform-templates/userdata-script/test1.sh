@@ -30,8 +30,6 @@ export M2=${install_dir}/bin
 export PATH=${install_dir}/bin:$PATH
 EOF
 source /etc/profile.d/maven.sh
-echo maven installed to ${install_dir}
-printf "\n\nTo get mvn in your path, open a new shell or execute: source /etc/profile.d/maven.sh\n" 
 yum install java-17-amazon-corretto-headless -y
 rpm -ivh https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.rpm
 yum install docker -y
@@ -44,5 +42,9 @@ chmod +x ./kubectl
 mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
 echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
 curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
-helm version --short 
+yum install nginx -y
+systemctl start nginx
+systemctl enable nginx
+yum install https://rpm.nodesource.com/pub_16.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y
+yum install nodejs -y --setopt=nodesource-nodejs.module_hotfixes=1
 --//--
