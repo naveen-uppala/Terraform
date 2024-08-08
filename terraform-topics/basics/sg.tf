@@ -1,12 +1,13 @@
 provider "aws" {
-  region = "ap-south-1"
+  region = "us-east-2"
 }
 
+
 #Create security group with firewall rules
-resource "aws_security_group" "batch17_security_grp" {
-  name        = "Batch-17 Security Group"
+resource "aws_security_group" "batch19_security_grp" {
+  name        = "Batch-19 Security Group"
   description = "security group for allowing SSH and HTTP traffic to EC2 instances"
-  vpc_id = "vpc-0f751f1df4ef1c711"
+  vpc_id = "vpc-00383e29bb7567ac7"
 
  ingress {
     from_port   = 22
@@ -16,12 +17,11 @@ resource "aws_security_group" "batch17_security_grp" {
   }
 
  ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 443
+    to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
  # outbound from Ec
  egress {
     from_port   = 0
@@ -31,8 +31,6 @@ resource "aws_security_group" "batch17_security_grp" {
   }
 
   tags= {
-    Name = "Batch-17 Security Group"
+    Name = "Batch-19 Security Group"
   }
 }
-
-

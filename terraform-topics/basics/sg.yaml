@@ -1,5 +1,6 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: CloudFormation template for creating security group  
+Description: CloudFormation template for creating security group 
+
 Resources:
   DemoSG:
     Type: AWS::EC2::SecurityGroup
