@@ -1,15 +1,14 @@
-variable "primary_region" {
-  default = "us-east-1"
-}
-
-variable "secondary_region" {
-  default = "us-east-2"
-}
-
 variable "ami_id" {
-  default = "ami-0e731c8a588258d0d"
+  type = string
+  description = "AMI ID for creating the instance"
 } 
 
 variable "instance_type" {
-  default = "t2.micro"
+  type = string
+  description = "instance cpu and memory configuration"
+}
+
+variable "security_groups" {
+  type = list(string)
+  
 }

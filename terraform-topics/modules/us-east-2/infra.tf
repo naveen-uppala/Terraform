@@ -1,13 +1,17 @@
-  provider "aws" {
+provider "aws" {
   region = "us-east-2"
-}
-module "ec2module" {
-  source = "../tf-modules/EC2"
-  ami_id = "ami-0cf7b2f456cd5efd4"
-  instance_type ="t2.large"
 }
 
 module "sgmodule" {
   source = "../tf-modules/SG"
-  vpc_id = "vpc-0b46d8b7746118a42"
+  vpc_id = "vpc-00383e29bb7567ac7"
+  sg_name = "batch19-sg"
+  sg_tag_name = "batch19-sg"
+}
+
+module "ec2module" {
+  source = "../tf-modules/EC2"
+  ami_id = "ami-05c3dc660cb6907f0"
+  instance_type ="t2.large"
+  security_groups = [module.sgmodule.security_group_id]
 }

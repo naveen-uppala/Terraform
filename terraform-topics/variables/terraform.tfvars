@@ -1,0 +1,6 @@
+region="us-east-2"
+instance_type="t2.medium"
+vpc_id = "vpc-00383e29bb7567ac7"
+ami_id = "ami-05c3dc660cb6907f0"
+sg_name = "batch19-sg"
+sg_description = "for allowing port 22 inbound access"

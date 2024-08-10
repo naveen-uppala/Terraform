@@ -1,6 +1,6 @@
 #Create security group with firewall rules
 resource "aws_security_group" "batch17_security_grp" {
-  name        = var.vpc_name
+  name        = var.sg_name
   description = "security group for allowing SSH and HTTP traffic to EC2 instances"
   vpc_id = var.vpc_id
   
@@ -27,6 +27,10 @@ resource "aws_security_group" "batch17_security_grp" {
   }
 
   tags= {
-    Name = "Demo Security Group"
+    Name = var.sg_tag_name
   }
+}
+
+output "security_group_id" {
+  value = aws_security_group.batch17_security_grp.id
 }

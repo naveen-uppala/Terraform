@@ -1,16 +1,16 @@
 provider "aws" {
-  region = var.region
+  region = "us-east-2"
 }
 
 #Create security group with firewall rules
 resource "aws_security_group" "batch19_security_grp" {
-  name        = var.sg_name
-  description = var.sg_description
-  vpc_id = var.vpc_id
+  name        = batch19-sg
+  description = "To allow ssh access on EC2 instance"
+  vpc_id = ""
 
  ingress {
-    from_port   = var.ssh_port
-    to_port     = var.ssh_port
+    from_port   = 22
+    to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -30,8 +30,9 @@ resource "aws_security_group" "batch19_security_grp" {
 
 #Create EC2 instance for testing purpose
 resource "aws_instance" "myFirstInstance" {
-  ami     = var.ami_id
-  instance_type = var.instance_type
+  depends_on = [aws_security_group.batch19_security_grp]
+  ami     = ami-05c3dc660cb6907f0
+  instance_type = "t2.micro"
   # #Cross attribute reference 
   vpc_security_group_ids= [aws_security_group.batch19_security_grp.id]
 }  

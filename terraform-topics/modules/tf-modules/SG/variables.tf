@@ -1,9 +1,14 @@
 variable "vpc_id" {
-    default = "vpc-06db7a0443e4005b5"
+    type = string
   
 }
 
-variable "vpc_name" {
-    default = "Demo Security Group"
+variable "sg_name" {
+    type = string
+  
+}
+
+variable "sg_tag_name" {
+    type = string
   
 }
