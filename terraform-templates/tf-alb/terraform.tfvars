@@ -1,15 +1,10 @@
 # You can customize these values as needed
 region = "us-east-2"
 internal = false
-load_balancer_name = "my-alb2"
-security_groups = ["sg-06ac155edea432fbc"]
-subnets = ["subnet-061b0dd145e444875", "subnet-0c821a62cb75f25be", "subnet-03113ab7dc2eae892"]
+load_balancer_name = "frontend-alb"
+subnets = ["subnet-0ebf7061d92cb1854", "subnet-01a4eb19143e0a787", "subnet-0222086e138ca3852"]
 enable_deletion_protection = false
-listener_port = 80
-listener_protocol = "HTTP"
-target_group_name = "my-target-group"
-target_group_port = 80
-target_group_protocol = "HTTP"
-vpc_id = "vpc-0b46d8b7746118a42"
-health_check_path = "/"
+listener_port = 443
+listener_protocol = "HTTPS"
+vpc_id = "vpc-08f32cb147bf6df43"
 listener_rule_path_pattern = ["/"]

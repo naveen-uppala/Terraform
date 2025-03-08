@@ -1,12 +1,12 @@
-provider "aws" {
-  region = var.region
-}
+# provider "aws" {
+#   region = var.region
+# }
 
 resource "aws_lb" "my_alb2" {
   name               = var.load_balancer_name
   internal           = var.internal
   load_balancer_type = "application"
-  security_groups    = var.security_groups
+  security_groups    = [aws_security_group.frontend_alb_sg.id]
   subnets            = var.subnets
   enable_deletion_protection = var.enable_deletion_protection
 }
@@ -27,29 +27,29 @@ resource "aws_lb_listener" "my_listener" {
   }
 }
 
-resource "aws_lb_target_group" "my_target_group" {
-  name        = var.target_group_name
-  port        = var.target_group_port
-  protocol    = var.target_group_protocol
-  vpc_id      = var.vpc_id
-  target_type = "instance"
+# resource "aws_lb_target_group" "my_target_group" {
+#   name        = var.target_group_name
+#   port        = var.target_group_port
+#   protocol    = var.target_group_protocol
+#   vpc_id      = var.vpc_id
+#   target_type = "instance"
 
-  health_check {
-    path = var.health_check_path
-  }
-}
+#   health_check {
+#     path = var.health_check_path
+#   }
+# }
 
-resource "aws_lb_listener_rule" "my_rule" {
-  listener_arn = aws_lb_listener.my_listener.arn
+# resource "aws_lb_listener_rule" "my_rule" {
+#   listener_arn = aws_lb_listener.my_listener.arn
 
-  action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.my_target_group.arn
-  }
+#   action {
+#     type             = "forward"
+#     target_group_arn = aws_lb_target_group.my_target_group.arn
+#   }
 
-  condition {
-    path_pattern {
-      values = var.listener_rule_path_pattern
-    }
-  }
-}
+#   condition {
+#     path_pattern {
+#       values = var.listener_rule_path_pattern
+#     }
+#   }
+# }
