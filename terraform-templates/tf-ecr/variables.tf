@@ -3,10 +3,16 @@ variable "aws_region" {
   type        = string
 }
 
-variable "ecr_name" {
-  description = "The list of ecr names to create"
+variable "ecr_frontend" {
+  description = "ECR repository for storing frontend docker images"
   type        = string
 }
+
+variable "ecr_backend" {
+  description = "ECR repository for storing backend docker images"
+  type        = string
+}
+
 variable "tags" {
   description = "The key-value maps for tagging"
   type        = map(string)

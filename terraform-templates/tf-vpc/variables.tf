@@ -9,32 +9,47 @@ variable "vpc-cidr" {
   description   = "VPC CIDR Block"
 }
 
-variable "public-subnet-1-cidr" {
+variable "web-tier-subnet-1-cidr" {
   type          = string
   description   = "Public Subnet 1 CIDR Block"
 }
 
-variable "public-subnet-2-cidr" {
+variable "web-tier-subnet-2-cidr" {
   type          = string
   description   = "Public Subnet 2 CIDR Block"
 }
 
-variable "private-subnet-1-cidr" {
+variable "web-tier-subnet-3-cidr" {
+  type          = string
+  description   = "Public Subnet 3 CIDR Block"
+}
+
+variable "app-tier-subnet-1-cidr" {
   type          = string
   description   = "Private Subnet 1 CIDR Block"
 }
 
-variable "private-subnet-2-cidr" {
+variable "app-tier-subnet-2-cidr" {
   type          = string
   description   = "Private Subnet 2 CIDR Block"
 }
 
-variable "private-subnet-3-cidr" {
+variable "app-tier-subnet-3-cidr" {
   type          = string
   description   = "Private Subnet 3 CIDR Block"
 }
 
-variable "private-subnet-4-cidr" {
+variable "data-tier-subnet-1-cidr" {
   type          = string
   description   = "Private Subnet 4 CIDR Block"
+}
+
+variable "data-tier-subnet-2-cidr" {
+  type          = string
+  description   = "Private Subnet 5 CIDR Block"
+}
+
+variable "data-tier-subnet-3-cidr" {
+  type          = string
+  description   = "Private Subnet 6 CIDR Block"
 }

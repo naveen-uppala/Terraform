@@ -1,13 +1,11 @@
 provider "aws" {
-  region = "us-east-2"
+  region = "us-east-1"
 }
-
-
 #Create security group with firewall rules
-resource "aws_security_group" "batch19_security_grp" {
-  name        = "Batch-19 Security Group"
+resource "aws_security_group" "batch21_security_grp" {
+  name        = "Batch-22 Security Group"
   description = "security group for allowing SSH and HTTP traffic to EC2 instances"
-  vpc_id = "vpc-00383e29bb7567ac7"
+  vpc_id = "vpc-079401ef4e8620ed6"
 
  ingress {
     from_port   = 22
@@ -31,6 +29,6 @@ resource "aws_security_group" "batch19_security_grp" {
   }
 
   tags= {
-    Name = "Batch-19 Security Group"
+    Name = "Batch-21 Security Group"
   }
 }
